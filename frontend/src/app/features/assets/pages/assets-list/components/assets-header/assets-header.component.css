@@ -1,0 +1,30 @@
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.header-main {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.header-main h2 {
+  margin: 0;
+}
+.filter-group label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.filter-group select {
+  margin-top: 0.25rem;
+  min-width: 300px;
+}
+.header-actions button {
+  white-space: nowrap;
+}

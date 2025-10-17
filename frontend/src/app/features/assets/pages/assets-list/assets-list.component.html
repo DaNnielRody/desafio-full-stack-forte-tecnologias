@@ -1,0 +1,16 @@
+<section class="page-card">
+  <app-assets-header
+    [companies]="companies$ | async"
+    [filterControl]="filterForm.controls.companyId"
+    (createRequest)="modalOpen = true"
+  ></app-assets-header>
+
+  <app-assets-grid [assets]="assets$ | async"></app-assets-grid>
+
+  <app-asset-create-modal
+    *ngIf="modalOpen"
+    [companies]="companies$ | async"
+    (closeRequest)="modalOpen = false"
+    (saveRequest)="handleCreateAsset($event)"
+  ></app-asset-create-modal>
+</section>

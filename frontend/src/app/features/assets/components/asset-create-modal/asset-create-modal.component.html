@@ -1,0 +1,53 @@
+<div class="modal-backdrop" (click)="closeRequest.emit()"></div>
+
+<div class="modal">
+  <div class="modal-header">
+    <h3>{{ 'ASSET.NEW_TITLE' | translate }}</h3>
+    <button class="close-btn" (click)="closeRequest.emit()">×</button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="createForm" (ngSubmit)="save()">
+
+      <!-- Nome -->
+      <div class="form-group">
+        <label for="asset-name">{{ 'ASSET.NAME' | translate }}</label>
+        <input
+          id="asset-name"
+          type="text"
+          formControlName="name"
+          [placeholder]="'ASSET.NAME_PLACEHOLDER' | translate"
+          [class.invalid]="isInvalid('name')"
+        />
+        <small class="error" *ngIf="isInvalid('name')">
+          {{ 'ASSET.NAME_REQUIRED' | translate }}
+        </small>
+      </div>
+
+      <!-- Tipo -->
+      <div class="form-group">
+        <label for="asset-type">{{ 'ASSET.TYPE' | translate }}</label>
+        <input
+          id="asset-type"
+          type="text"
+          formControlName="type"
+          [placeholder]="'ASSET.TYPE_PLACEHOLDER' | translate"
+          [class.invalid]="isInvalid('type')"
+        />
+        <small class="error" *ngIf="isInvalid('type')">
+          {{ 'ASSET.TYPE_REQUIRED' | translate }}
+        </small>
+      </div>
+
+      <!-- Botões -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="closeRequest.emit()">
+          {{ 'EMPLOYEE.CANCEL' | translate }}
+        </button>
+        <button type="submit" [disabled]="createForm.invalid">
+          {{ 'EMPLOYEE.SAVE' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

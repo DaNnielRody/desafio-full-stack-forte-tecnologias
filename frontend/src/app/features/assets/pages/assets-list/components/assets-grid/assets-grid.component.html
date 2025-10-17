@@ -1,0 +1,17 @@
+<div>
+  <h3>{{ 'ASSET.LIST_TITLE' | translate }}</h3>
+
+  <ng-container *ngIf="assets; else loading">
+    <div *ngIf="assets.length === 0" class="empty-state">
+      {{ 'ASSET.NO_ASSETS' | translate }}
+    </div>
+
+    <div *ngIf="assets.length > 0" class="card-grid">
+      <app-asset-card *ngFor="let asset of assets" [asset]="asset"></app-asset-card>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <p>{{ 'ASSET.LOADING' | translate }}</p>
+  </ng-template>
+</div>

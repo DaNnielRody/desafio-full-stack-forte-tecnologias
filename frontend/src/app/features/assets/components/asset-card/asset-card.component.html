@@ -1,0 +1,14 @@
+<div class="item-card">
+  <div class="item-card-image">
+    <img src="assets/icons/assets.svg" [alt]="'ASSET.ICON_ALT' | translate">
+  </div>
+  
+  <div class="item-card-content">
+    <h4 class="item-name">{{ asset?.name }}</h4>
+    <p class="item-detail">{{ 'ASSET.TYPE_LABEL' | translate }}: {{ asset?.type }}</p>
+  </div>
+  
+  <div class="item-card-actions">
+    <span class="asset-status">{{ asset?.status | assetStatusLabel }}</span>
+  </div>
+</div>

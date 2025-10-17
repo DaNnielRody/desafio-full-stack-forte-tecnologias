@@ -1,0 +1,21 @@
+<header class="page-header">
+  <div class="header-main">
+    <h2>{{ 'ASSET.TITLE' | translate }}</h2>
+    
+    <div class="filter-group">
+      <label for="company-filter">{{ 'ASSET.FILTER_COMPANY' | translate }}</label>
+      <select id="company-filter" [formControl]="filterControl">
+        <option value="">{{ 'ASSET.ALL_COMPANIES' | translate }}</option>
+        <option *ngFor="let c of companies" [value]="c.id">
+          {{ c.name }} ({{ c.cnpj }})
+        </option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="header-actions">
+    <button class="btn-create" (click)="createRequest.emit()">
+      {{ 'ASSET.NEW_TITLE' | translate }}
+    </button>
+  </div>
+</header>

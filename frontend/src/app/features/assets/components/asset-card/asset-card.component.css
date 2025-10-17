@@ -1,0 +1,64 @@
+:host {
+  display: block;
+}
+
+.item-card {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.2s ease-in-out;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+}
+
+.item-card-image {
+  width: 80px;
+  height: 80px;
+  background-color: var(--bg-light);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.item-card-image img {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+.item-card-content {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.item-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-on-light);
+}
+
+.item-detail {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.item-card-actions {
+  width: 100%;
+}
+
+.asset-status {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
