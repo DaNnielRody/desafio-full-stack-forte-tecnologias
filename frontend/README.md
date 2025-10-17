@@ -144,5 +144,3 @@ O arquivo é referenciado em `angular.json` no target `serve:development`.
 - Componentes e serviços coesos por domínio
 
 ---
-
-Qualquer dúvida ou sugestão, fique à vontade para abrir uma issue ou PR.
