@@ -1,0 +1,15 @@
+<header class="page-header">
+  <div class="header-main">
+    <a *ngIf="backLink" [routerLink]="backLink" class="back-link">← Voltar</a>
+    <button class="back-button" *ngIf="!actionButtonText && !!backLink" (click)="actionClick.emit()">
+      {{ actionButtonText }}
+    </button>
+    <h2 *ngIf="title">{{ title }}</h2>
+  </div>
+  <div class="header-actions">
+    <button class="btn-create" *ngIf="right" (click)="actionClick.emit()">
+      {{ actionButtonText }}
+    </button>
+  </div>
+</header>
+  

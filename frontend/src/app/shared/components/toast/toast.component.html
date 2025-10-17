@@ -1,0 +1,14 @@
+<div class="toast-wrap" *ngIf="toastService.toasts$ | async as toasts">
+  <div
+    class="toast"
+    *ngFor="let t of toasts"
+    [class.success]="t.type === 'success'"
+    [class.error]="t.type === 'error'"
+  >
+    <span>{{ t.text }}</span>
+    <button type="button" (click)="toastService.dismiss(t.id)">×</button>
+  </div>
+  <div class="sr-only" aria-live="polite">
+    {{ toasts.length ? toasts[toasts.length - 1].text : "" }}
+  </div>
+</div>
