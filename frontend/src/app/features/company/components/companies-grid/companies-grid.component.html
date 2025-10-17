@@ -1,0 +1,17 @@
+<ng-container *ngIf="companies; else loading">
+  <div *ngIf="companies.length === 0" class="empty-state">
+    <p>{{ 'COMPANY.NO_COMPANIES' | translate }}</p>
+  </div>
+
+  <div *ngIf="companies.length > 0" class="card-grid">
+    <app-company-card 
+      *ngFor="let company of companies" 
+      [company]="company"
+      (cardClick)="viewCompanyDetails(company.id)"
+    ></app-company-card>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <p>{{ 'COMPANY.LOADING' | translate }}</p>
+</ng-template>

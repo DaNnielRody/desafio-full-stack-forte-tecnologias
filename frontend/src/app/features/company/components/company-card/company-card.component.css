@@ -1,0 +1,121 @@
+:host {
+  display: block;
+}
+
+.item-card {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.item-card-image {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  background-color: var(--bg-light);
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.item-card-image img {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+.item-card-content {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.item-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem 0;
+  color: var(--text-on-light);
+}
+
+.item-detail {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.item-card-actions {
+  position: relative;
+}
+
+.action-menu-button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.action-menu-button:hover {
+      color: var(--accent-color);
+}
+
+.action-menu-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  z-index: 10;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--transition-speed);
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  padding: 0.75rem 1rem;
+  color: var(--text-on-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: block;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--bg-light);
+  color: var(--accent-color);
+}

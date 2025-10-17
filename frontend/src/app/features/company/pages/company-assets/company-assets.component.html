@@ -1,0 +1,17 @@
+<div class="page-card">
+  <app-page-header
+    [title]="'ASSET.COMPANY_TITLE' | translate"
+    [backLink]="'/companies'"
+    [actionButtonText]="'ASSET.NEW_TITLE' | translate"
+    (actionClick)="modalOpen = true"
+    [right]="true"
+  ></app-page-header>
+
+  <app-assets-grid [assets]="assets$ | async"></app-assets-grid>
+</div>
+
+<app-asset-create-modal
+  *ngIf="modalOpen"
+  (closeRequest)="modalOpen = false"
+  (saveRequest)="handleSaveAsset($event)"
+></app-asset-create-modal>

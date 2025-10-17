@@ -1,0 +1,29 @@
+<app-page-header [backLink]="'/companies'"></app-page-header>
+
+<div class="detail-layout" *ngIf="company$ | async as company">
+  
+  <app-company-info-card [company]="company"></app-company-info-card>
+
+  <app-company-employees-card 
+    [employees]="employees$ | async" 
+    (createClick)="isEmployeeModalOpen = true"
+  ></app-company-employees-card>
+  
+  <app-company-assets-card 
+    [assets]="assets$ | async" 
+    (createClick)="isAssetModalOpen = true"
+  ></app-company-assets-card>
+  
+</div>
+
+<app-employee-create-modal
+  *ngIf="isEmployeeModalOpen"
+  (closeRequest)="isEmployeeModalOpen = false"
+  (saveRequest)="handleCreateEmployee($event)"
+></app-employee-create-modal>
+
+<app-asset-create-modal
+  *ngIf="isAssetModalOpen"
+  (closeRequest)="isAssetModalOpen = false"
+  (saveRequest)="handleCreateAsset($event)"
+></app-asset-create-modal>

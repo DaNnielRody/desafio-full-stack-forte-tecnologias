@@ -1,0 +1,27 @@
+<div class="item-card" (click)="cardClick.emit()">
+  <div class="item-card-image">
+    <img src="assets/icons/enterprise.svg" [alt]="'COMPANY.ICON_ALT' | translate">
+  </div>
+  
+  <div class="item-card-content">
+    <h4 class="item-name">{{ company?.name }}</h4>
+    <p class="item-detail">{{ company?.cnpj }}</p>
+  </div>
+  
+  <div class="item-card-actions">
+    <div class="dropdown-container">
+      <button class="action-menu-button" (click)="toggleDropdown($event)" [attr.aria-label]="'COMPANY.ACTION_MENU' | translate">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+          <path d="M0 0h24v24H0V0z" fill="none"/>
+          <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+      </button>
+
+      <div class="dropdown-menu" [class.open]="isDropdownOpen">
+        <a (click)="goToCompany('details', company?.id, $event)">{{ 'COMPANY.VIEW_DETAILS' | translate }}</a>
+        <a (click)="goToCompany('employees', company?.id, $event)">{{ 'COMPANY.MANAGE_EMPLOYEES' | translate }}</a>
+        <a (click)="goToCompany('assets', company?.id, $event)">{{ 'COMPANY.MANAGE_ASSETS' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</div>

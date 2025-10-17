@@ -1,0 +1,57 @@
+<div class="modal-backdrop" (click)="closeRequest.emit()"></div>
+
+<div class="modal">
+  <div class="modal-header">
+    <h3>{{ 'COMPANY.NEW_TITLE' | translate }}</h3>
+    <button class="close-btn" (click)="closeRequest.emit()">×</button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="companyForm" (ngSubmit)="save()">
+
+      <!-- Nome -->
+      <div class="form-group">
+        <label for="company-name">{{ 'COMPANY.NAME' | translate }}</label>
+        <input 
+          id="company-name" 
+          type="text" 
+          formControlName="name"
+          [ngClass]="{'is-invalid': companyForm.controls.name.invalid && companyForm.controls.name.touched}"
+          [placeholder]="'COMPANY.NAME_PLACEHOLDER' | translate"
+        />
+        <div *ngIf="companyForm.controls.name.invalid && companyForm.controls.name.touched" class="error-messages">
+          <small *ngIf="companyForm.controls.name.hasError('required')">{{ 'COMPANY.NAME_REQUIRED' | translate }}</small>
+          <small *ngIf="companyForm.controls.name.hasError('minlength')">{{ 'COMPANY.NAME_MINLENGTH' | translate }}</small>
+        </div>
+      </div>
+
+      <!-- CNPJ -->
+      <div class="form-group">
+        <label for="company-cnpj">{{ 'COMPANY.CNPJ' | translate }}</label>
+        <input 
+          id="company-cnpj" 
+          type="text" 
+          formControlName="cnpj"
+          appCnpjMask 
+          [placeholder]="'COMPANY.CNPJ_PLACEHOLDER' | translate"
+          [ngClass]="{'is-invalid': companyForm.controls.cnpj.invalid && companyForm.controls.cnpj.touched}"
+        />
+        <div *ngIf="companyForm.controls.cnpj.invalid && companyForm.controls.cnpj.touched" class="error-messages">
+          <small *ngIf="companyForm.controls.cnpj.hasError('required')">{{ 'COMPANY.CNPJ_REQUIRED' | translate }}</small>
+          <small *ngIf="companyForm.controls.cnpj.hasError('cnpjLength')">{{ 'COMPANY.CNPJ_LENGTH' | translate }}</small>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="closeRequest.emit()">
+          {{ 'EMPLOYEE.CANCEL' | translate }}
+        </button>
+        <button type="submit" [disabled]="companyForm.invalid">
+          {{ 'EMPLOYEE.SAVE' | translate }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

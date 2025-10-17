@@ -1,0 +1,19 @@
+.info-card {
+  background-color: var(--primary-brand);
+  color: var(--text-on-dark);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+}
+
+.info-card h2 {
+  color: var(--text-on-dark);
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+
+.cnpj {
+  margin: 0;
+  opacity: 0.8;
+  font-family: monospace;
+}

@@ -1,0 +1,16 @@
+<div class="page-card">
+  <div class="card-header">
+    <h3>{{ 'ASSET.COMPANY_TITLE' | translate }}</h3>
+    <button class="btn-create" (click)="createClick.emit()">
+      {{ 'ASSET.NEW_TITLE' | translate }}
+    </button>
+  </div>
+
+  <div *ngIf="!assets || assets.length === 0" class="empty-state">
+    {{ 'ASSET.NO_ASSETS' | translate }}
+  </div>
+
+  <div *ngIf="assets && assets.length > 0" class="card-grid">
+    <app-asset-card *ngFor="let asset of assets" [asset]="asset"></app-asset-card>
+  </div>
+</div>
