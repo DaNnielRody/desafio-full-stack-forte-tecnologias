@@ -24,10 +24,6 @@ async function bootstrap() {
     .setTitle('Forte Asset Manager API')
     .setDescription('API de gestão de ativos, empresas e colaboradores')
     .setVersion('1.0.0')
-    .addBearerAuth(
-      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
-      'bearer',
-    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document, {
