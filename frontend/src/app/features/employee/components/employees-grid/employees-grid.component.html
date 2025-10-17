@@ -1,0 +1,16 @@
+<ng-container *ngIf="employees; else loading">
+  <div *ngIf="employees.length === 0" class="empty-state">
+    <p>{{ 'EMPLOYEE.NO_EMPLOYEES' | translate }}</p>
+  </div>
+
+  <div *ngIf="employees.length > 0" class="card-grid">
+    <app-employee-card 
+      *ngFor="let employee of employees" 
+      [employee]="employee"
+    ></app-employee-card>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <p>{{ 'EMPLOYEE.LOADING' | translate }}</p>
+</ng-template>

@@ -1,0 +1,16 @@
+<div class="page-card">
+  <app-employees-header
+    [filterControl]="filterForm.controls.companyId"
+    [companies]="companies$ | async"
+    (createClick)="modalOpen = true"
+  ></app-employees-header>
+
+  <app-employees-grid [employees]="employees$ | async"></app-employees-grid>
+</div>
+
+<app-employee-create-modal
+  *ngIf="modalOpen"
+  [companies]="companies$ | async"
+  (closeRequest)="modalOpen = false"
+  (saveRequest)="handleSaveEmployee($event)"
+></app-employee-create-modal>

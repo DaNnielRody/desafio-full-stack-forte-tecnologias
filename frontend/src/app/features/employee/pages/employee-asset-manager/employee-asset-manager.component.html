@@ -1,0 +1,20 @@
+<div class="page-card">
+  <app-page-header
+    [title]="'EMPLOYEE.ASSET_MANAGEMENT' | translate"
+    (actionClick)="goBack()"
+    [actionButtonText]="'COMMON.BACK' | translate"
+  ></app-page-header>
+
+  <app-employee-info-card [employee]="employee$ | async"></app-employee-info-card>
+  
+  <div class="manager-layout">
+    <app-associated-assets-card
+      [assets]="associatedAssets$ | async"
+      (disassociate)="handleDisassociate($event)"
+    ></app-associated-assets-card>
+    <app-available-assets-card
+      [assets]="availableAssets$ | async"
+      (associate)="handleAssociate($event)"
+    ></app-available-assets-card>
+  </div>
+</div>

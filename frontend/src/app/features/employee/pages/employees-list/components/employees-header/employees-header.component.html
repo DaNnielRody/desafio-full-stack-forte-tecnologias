@@ -1,0 +1,21 @@
+<header class="page-header">
+  <div class="header-main">
+    <h2>{{ 'NAV.EMPLOYEES' | translate }}</h2>
+
+    <div class="filter-group">
+      <label for="company-filter">{{ 'EMPLOYEE.COMPANY' | translate }}</label>
+      <select id="company-filter" [formControl]="filterControl">
+        <option value="">{{ 'EMPLOYEE.SELECT_COMPANY' | translate }}</option>
+        <option *ngFor="let c of companies" [value]="c.id">
+          {{ c.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="header-actions">
+    <button class="btn-create" (click)="createClick.emit()">
+      {{ 'EMPLOYEE.NEW_TITLE' | translate }}
+    </button>
+  </div>
+</header>

@@ -1,0 +1,18 @@
+:host {
+  display: block;
+}
+
+.empty-state {
+  color: var(--text-muted);
+  background: var(--bg-light);
+  border: 1px dashed var(--border-color);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}

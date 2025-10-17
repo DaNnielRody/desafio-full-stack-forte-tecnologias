@@ -1,0 +1,19 @@
+<div class="page-card">
+  <h3>{{ 'EMPLOYEE.ASSOCIATED_ASSETS_TITLE' | translate }}</h3>
+
+  <div *ngIf="!assets || assets.length === 0" class="empty-state">
+    {{ 'EMPLOYEE.NO_ASSOCIATED_ASSETS' | translate }}
+  </div>
+
+  <ul *ngIf="assets && assets.length > 0" class="item-list">
+    <li *ngFor="let asset of assets">
+      <div class="item-info">
+        <span class="item-name">{{ asset.name }}</span>
+        <span class="item-detail">{{ asset.type }}</span>
+      </div>
+      <button class="btn-danger-outline" (click)="disassociate.emit(asset.id)">
+        {{ 'EMPLOYEE.DISASSOCIATE' | translate }}
+      </button>
+    </li>
+  </ul>
+</div>

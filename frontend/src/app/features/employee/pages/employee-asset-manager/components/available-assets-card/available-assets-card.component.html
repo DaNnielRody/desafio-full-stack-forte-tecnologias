@@ -1,0 +1,19 @@
+<div class="page-card">
+  <h3>{{ 'EMPLOYEE.ASSOCIATE_ASSET_TITLE' | translate }}</h3>
+
+  <div class="form-group">
+    <label for="available-assets">{{ 'EMPLOYEE.AVAILABLE_ASSETS' | translate }}</label>
+    <select id="available-assets" [(ngModel)]="selectedAssetId">
+      <option [ngValue]="null" disabled>{{ 'EMPLOYEE.SELECT_ASSET' | translate }}</option>
+      <option *ngFor="let asset of assets" [value]="asset.id">
+        {{ asset.name }} ({{ asset.status | assetStatusLabel }})
+      </option>
+    </select>
+  </div>
+
+  <div class="form-actions">
+    <button (click)="submit()" [disabled]="!selectedAssetId">
+      {{ 'EMPLOYEE.ASSOCIATE' | translate }}
+    </button>
+  </div>
+</div>

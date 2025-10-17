@@ -1,0 +1,16 @@
+<div class="item-card">
+  <div class="item-card-image">
+    <img src="assets/icons/user-photo.svg" [alt]="'EMPLOYEE.ICON_ALT' | translate">
+  </div>
+  
+  <div class="item-card-content">
+    <h4 class="item-name">{{ employee?.name }}</h4>
+    <p class="item-detail">{{ employee?.email }}</p>
+  </div>
+  
+  <div class="item-card-actions">
+    <a [routerLink]="['/employees', employee?.id, 'assets']" class="btn btn-secondary btn-small">
+      {{ 'EMPLOYEE.VIEW_ASSETS' | translate }}
+    </a>
+  </div>
+</div>

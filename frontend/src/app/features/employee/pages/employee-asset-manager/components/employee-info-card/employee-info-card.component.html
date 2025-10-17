@@ -1,0 +1,9 @@
+<div class="info-card" *ngIf="employee">
+  <div class="info-card-image">
+     <img src="assets/icons/user-photo.svg" [alt]="'EMPLOYEE.ICON_ALT' | translate">
+  </div>
+  <div class="info-card-content">
+    <h2 class="employee-name">{{ employee.name }}</h2>
+    <p class="employee-detail">{{ employee.email }}</p>
+  </div>
+</div>

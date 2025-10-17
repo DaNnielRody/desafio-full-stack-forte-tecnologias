@@ -1,0 +1,39 @@
+.info-card {
+  background-color: var(--primary-brand);
+  color: var(--text-on-dark);
+  padding: 1.5rem 2rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.info-card-image {
+  width: 80px;
+  height: 80px;
+  background-color: var(--bg-light);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+}
+
+.info-card-image img {
+  width: 50%;
+  height: 50%;
+  object-fit: cover; 
+}
+
+.employee-name {
+  color: var(--text-on-dark);
+  margin: 0 0 0.25rem 0;
+  font-size: 1.5rem;
+}
+
+.employee-detail {
+  margin: 0;
+  opacity: 0.8;
+}
