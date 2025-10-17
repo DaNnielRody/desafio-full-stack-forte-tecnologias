@@ -1,27 +1,145 @@
-# ForteFrontend
+# Forte Asset Manager — Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Aplicação frontend em Angular 17 para gestão de empresas, colaboradores e ativos, com suporte a internacionalização (i18n), layout responsivo e integração via proxy com o backend.
 
-## Development server
+## Visão geral
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Framework**: Angular 17 (standalone disabled no schematics)
+- **i18n**: `@ngx-translate` com loader customizado
+- **UI/UX**: Layout principal (navbar + footer), componentes compartilhados e feedback via toast
+- **Integração**: Proxy configurado para `/api` → `http://localhost:3000`
 
-## Code scaffolding
+## Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Empresas**
+  - Listagem de empresas
+  - Detalhes da empresa (informações, ativos e colaboradores relacionados)
+  - Página de ativos por empresa
+  - Criação de empresa via modal
 
-## Build
+- **Colaboradores**
+  - Listagem de colaboradores
+  - Gerenciador de ativos por colaborador (associar e desassociar ativos)
+  - Criação de colaborador via modal
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Ativos**
+  - Listagem de ativos
+  - Criação de ativo via modal
+  - Apresentação do status do ativo via `asset-status` pipe
 
-## Running unit tests
+- **Infra e compartilhados**
+  - Máscaras de CPF/CNPJ via diretivas (`cpf-mask-directive`, `cnpj-mask.directive`)
+  - Componente de toast e `toast.service` para notificações
+  - Cabeçalho de página reutilizável
+  - Bandeiras e ícones estáticos em `src/assets`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Estrutura do projeto (resumo)
 
-## Running end-to-end tests
+```
+src/
+  app/
+    core/
+      models/                 # Modelos de domínio (empresa, colaborador, ativo)
+      services/               # Serviços base e de API
+    features/
+      assets/                 # Páginas e componentes de Ativos
+      company/                # Rotas, páginas e componentes de Empresas
+      employee/               # Rotas, páginas e componentes de Colaboradores
+    layout/                   # Main layout, navbar e footer
+    shared/
+      components/             # Page header, toast, etc.
+      directives/             # Máscaras CPF/CNPJ
+      pipes/                  # Asset status pipe
+    app.component.*           # Shell raiz
+    app.routes.ts             # Rotas da aplicação
+    app.config.ts             # Configuração do aplicativo
+    translate.config.ts       # Configuração de i18n
+  assets/
+    i18n/                     # Arquivos de tradução (en, pt-br, etc.)
+    icons/                    # Ícones SVG
+    flags/                    # Bandeiras (1x1, 4x3)
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Pré-requisitos
 
-## Further help
+- Node.js 18+ (recomendado 18 LTS ou 20 LTS)
+- NPM 9+
+- Angular CLI 17+
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Instalação
+
+```bash
+npm install
+```
+
+## Execução (desenvolvimento)
+
+```bash
+npm start
+```
+
+A aplicação subirá em `http://localhost:4200/`.
+
+- O proxy está habilitado no modo de desenvolvimento e redireciona chamadas para `/api` ao backend em `http://localhost:3000`.
+- Para ajustar o backend alvo, edite `proxy.conf.json`.
+
+## Build (produção)
+
+```bash
+npm run build
+```
+
+Os artefatos serão gerados em `dist/forte-frontend`.
+
+## Testes
+
+```bash
+npm test
+```
+
+## Internacionalização (i18n)
+
+- Arquivos de idioma em `src/assets/i18n` (`en.json`, `pt-br.json`, `es.json`, etc.).
+- Loader customizado em `src/app/shared/helpers/custom-translation-loader.helper.ts`.
+- Configuração em `src/app/translate.config.ts`.
+- Para definir o idioma padrão e idiomas suportados, ajuste a configuração de tradução.
+
+## Configuração de Proxy
+
+`proxy.conf.json`:
+
+```json
+{
+  "/api": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
+```
+
+O arquivo é referenciado em `angular.json` no target `serve:development`.
+
+## Scripts disponíveis
+
+- `npm start`: inicia `ng serve` (desenvolvimento com proxy)
+- `npm run build`: compila a aplicação
+- `npm run watch`: build contínuo em modo desenvolvimento
+- `npm test`: executa testes unitários (Karma)
+
+## Rotas principais (por feature)
+
+- `features/company`: rotas para listagem, detalhes, ativos da empresa e colaboradores
+- `features/employee`: rotas para listagem e gerenciador de ativos por colaborador
+- `features/assets`: rotas para listagem e criação de ativos
+
+## Convenções e padrões
+
+- Commits seguem **Conventional Commits**
+- Organização por camadas: `core`, `features`, `layout`, `shared`
+- Componentes e serviços coesos por domínio
+
+---
+
+Qualquer dúvida ou sugestão, fique à vontade para abrir uma issue ou PR.
