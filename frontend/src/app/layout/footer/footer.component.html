@@ -1,0 +1,18 @@
+<footer class="app-footer"> 
+  <div class="footer-container">
+    <div class="footer-copyright">
+      <span>
+        © {{ currentYear }} {{ 'FOOTER.BRAND' | translate }}. {{ 'FOOTER.RIGHTS' | translate }}
+      </span>
+    </div>
+
+    <div class="footer-links">
+      <a routerLink="/privacy-policy">{{ 'FOOTER.PRIVACY' | translate }}</a>
+      <a routerLink="/terms-of-service">{{ 'FOOTER.TERMS' | translate }}</a>
+    </div>
+
+    <div class="footer-version">
+      <span>{{ 'FOOTER.VERSION' | translate }}: {{ appVersion }}</span>
+    </div>
+  </div>
+</footer>

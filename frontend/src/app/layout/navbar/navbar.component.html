@@ -1,0 +1,60 @@
+<header class="navbar" [class.scrolled]="isScrolled()">
+  <div class="navbar-container">
+    <a class="navbar-brand" routerLink="/" (click)="closeMenu()">
+      {{ 'NAV.BRAND' | translate }}
+    </a>
+
+    <button class="navbar-toggle" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen()">
+      <span class="bar top"></span>
+      <span class="bar middle"></span>
+      <span class="bar bottom"></span>
+    </button>
+
+    <div class="navbar-right-side">
+      <nav class="navbar-links-desktop">
+        <ul>
+          <li><a routerLink="/companies" routerLinkActive="active">{{ 'NAV.COMPANIES' | translate }}</a></li>
+          <li><a routerLink="/employees" routerLinkActive="active">{{ 'NAV.EMPLOYEES' | translate }}</a></li>
+          <li><a routerLink="/assets" routerLinkActive="active">{{ 'NAV.ASSETS' | translate }}</a></li>
+        </ul>
+      </nav>
+
+      <div class="language-select">
+        <div class="current-lang" (click)="toggleLangDropdown()">
+          <span class="fi" [class]="currentLangFlagClass()"></span>
+          <span>{{ currentLang() | uppercase }}</span>
+        </div>
+        <ul class="lang-dropdown" [class.open]="isLangDropdownOpen">
+          <li *ngFor="let lang of availableLangs" (click)="changeLanguage(lang.code); closeLangDropdown()">
+            <span class="fi" [class]="lang.flagClass"></span> 
+            <span>{{ lang.name }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="sidemenu-backdrop" [class.open]="isMenuOpen()" (click)="closeMenu()"></div>
+<div class="sidemenu" [class.open]="isMenuOpen()">
+  <div class="sidemenu-header">
+    <span>{{ 'NAV.BRAND' | translate }}</span>
+    <button (click)="closeMenu()">✕</button>
+  </div>
+
+  <nav class="sidemenu-nav">
+    <ul>
+      <li><a routerLink="/companies" routerLinkActive="active" (click)="closeMenu()">{{ 'NAV.COMPANIES' | translate }}</a></li>
+      <li><a routerLink="/employees" routerLinkActive="active" (click)="closeMenu()">{{ 'NAV.EMPLOYEES' | translate }}</a></li>
+      <li><a routerLink="/assets" routerLinkActive="active" (click)="closeMenu()">{{ 'NAV.ASSETS' | translate }}</a></li>
+
+      <li class="language-section-title"><span>{{ 'NAV.LANGUAGES' | translate }}</span></li>
+      <li *ngFor="let lang of availableLangs" 
+          (click)="changeLanguage(lang.code); closeMenu()"
+          class="sidemenu-lang-item"> 
+        <span class="fi" [class]="lang.flagClass"></span> 
+        <span>{{ lang.name }}</span>
+      </li>
+    </ul>
+  </nav>
+</div>
